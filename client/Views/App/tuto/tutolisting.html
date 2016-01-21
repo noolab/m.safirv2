@@ -1,0 +1,28 @@
+<template name="tutolisting">
+		 <div class="container">		
+		  <div class="clearfix"></div>
+            <div class="space_cont_top">
+             <div class="row">
+             {{#each getContent _id}}
+	              <div class="col-md-4 shadow_bottom">
+	                 <a href="/tutodetails/{{_id}}"> <h4 class="h4-bold-tuto-1" style="color:#071018;">{{title}}</h4></a>
+					 <a href="/tutodetails/{{_id}}"> 
+					 	{{#with getTutoImg _id}}
+					 	<img src="{{getImg this}}" class="img-responsive img-circle" width="250" height="250">
+					 	{{/with}}
+					 </a>
+					  <div class="share-control1">
+						   
+					   </div> 
+					   <div class="col-md-12 row share-control1">
+					  	<p class="p-font-sm-1">{{{content}}}</p>
+					  </div>
+	              </div>
+	              {{else}}
+	              <i>{{_ "No tutorials in this category."}}</i>
+	              {{/each}}
+                 </div>
+	         </div>
+          </div>
+
+</template>

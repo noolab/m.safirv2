@@ -1,0 +1,101 @@
+/*detail style swiper*/
+.swiper-container {
+  width: 100%;
+  height: 100%;
+
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+/*end*/
+textarea#status {
+  width: 230px;
+  height: 120px;
+  border: 3px solid #ccc;
+  padding: 5px;
+  font-family: Tahoma, sans-serif;
+  background-image: url(bg.gif);
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+html { 
+  background: url(images/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.myBackground.jpg', sizingMethod='scale');
+-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='myBackground.jpg', sizingMethod='scale')";
+}
+div.fill-screen {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.make-it-fit {
+    max-width: 99%;
+    max-height: 50%;
+}
+.btnred{
+	width:50px;
+	text-align: center;
+	margin-left: -10px;
+}
+.search{
+ margin:30px 0px;
+ position: relative;
+ overflow:hidden;
+}
+
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+}
+.padding-left{
+	padding-left:0;
+}
+.padding-right{
+	padding-right:0;
+}
+.box .search-group{
+	cursor:pointer;
+}
+.box-inner {
+    padding: 3px 10px;
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+	display:none;
+}
+.list-inline>li:first-child {
+    padding-left: 0;
+}
+.box-inner .list-inline{
+	margin-left:0;
+}
+.input-group-addon{
+	cursor:pointer;
+}
+.input-group-addon .glyphicon{
+	font-weight:bold;
+	font-size:14px;
+}
+.glyphicon-list:before{
+	margin-right:5px;
+}

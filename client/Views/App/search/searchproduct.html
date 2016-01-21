@@ -1,0 +1,90 @@
+<template name="searchproduct">
+
+{{#if displayproduct}}
+	<div class="container">
+				<div class="col-md-12">
+					<div class="hold_result">
+						<h1>Products</h1><br>
+						<p>{{nbproducts}} products result</p>
+					</div>
+					<div class="hold_bradcame">
+						<a href="#" class="pull-left green">Best selling <span class="fa fa-caret-right"></span></a>
+						<p class="pull-right black">View by page</p>
+					</div>
+
+		<div class="hold_product">
+			
+				{{#each product}}
+				
+{{#if validProduct price getImg image}}
+				<div class="col-xs-6 col-md-3 product_item">
+						<div class="thumbnail text-left">
+								<div class="clearfix" style="width: 100%;">
+										<a href="{{pathFor 'details' id=_id}}" title="{{title}}">
+											<img src="{{getImg image}}" class="img-responsive " width="200" height="200">
+										</a>
+									</div>
+
+									<div class="clearfix" style="width: 100%;height:80px;line-height:90%;">
+										<a href="{{pathFor 'details' id=_id}}" class="title">{{title}}</a>
+									</div>
+									<div class="clearfix text-center" style="width: 100%; height: 50px; overflow: hidden; padding-top:20px;">
+										<a href="{{pathFor 'details' id=_id}}" class="price">{{price}} </a><a href="" class="price" >
+										</a>
+										<a href="#" id="unlike"><span id="unlike{{_id}}" class="fa fa-heart-o fonfa"></span></a>
+										<a href="#" id="like" style="color:red;"><span id="like{{_id}}" class="fa fa-heart nonelike fonfa"></span></a>
+										<!-- {{#if isLiked _id}}  
+										<span class="fa fa-heart red pull-right" style="padding-left:4px;" id="favorite"></span>
+											{{else}}
+										<span class="fa fa-heart-o pull-right" style="padding-left:4px;" id="favorite"></span>
+										{{/if}} -->
+									</div>
+
+
+								</div>
+							</div>
+							{{/if}}
+				{{/each}}
+				
+			
+		</div>
+				</div>		
+		</div>
+{{/if}}
+
+{{#if displayContent}}
+		<h1>Contents</h1>
+	<div class="container">
+		<div class="hold_result">
+						<p>{{nbcontents}} contents results</p>
+		</div>
+		<!-- {{#each content}}
+			{{title}}<br />
+		{{/each}} -->
+					
+	</div>
+	{{#each content}}
+	<div class="container">
+				<div class="mode-news webzine-title1">
+					<h2 class="text-center bold"><a href="#" class="title" style="color:black;">{{title}}</a></h2>
+					<div class="mode-img"><a href="#">
+						{{#with getFirstImgContent _id}}
+						<img src="{{getImg this}}"  width="200" height="200" class="center-block img-responsive">
+						{{/with}}
+					</a>
+					</div>
+					<div class="mode-description">
+						<!-- <p class="center-block">{{{content}}}</p> -->
+					</div>
+						
+					
+				</div>
+			</div>
+		<section id="not-line-straight">
+			<img src="/images/line1.jpg" class="img-responsive">
+		</section>
+		{{/each}}
+    
+{{/if}}
+
+</template>

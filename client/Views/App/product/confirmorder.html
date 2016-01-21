@@ -1,0 +1,71 @@
+<template name= "confirmorder">
+	<div class="container" style="padding-bottom:20px;">
+<div class="row">
+						<!-- Address -->
+						<form>
+						   <table class="table">
+									<tbody>
+										{{#with getprofile}}
+										
+										<tr>
+											<td><strong>Email:</strong></td>
+											{{#each emails}}
+											<td style="font-weight:bold" id="email">{{address}}</td>
+											{{/each}}
+										</tr>
+										<!-- <tr>
+											<td><strong>{{_ "Address"}}:</strong></td>
+											<td style="font-weight:bold" id="address1">{{profile.address}}</td>
+										</tr> -->
+										{{/with}}
+									</tbody>
+									
+								</table>
+								<div class="form-group" style="padding-bottom:20px;">
+						<label class="control-label col-sm-3" for="address">{{_ "Choose"}} {{_ "Address"}} <span style="color:red">*</span></label>
+						<div class="col-sm-9">
+							  <input type="checkbox" name="address1" id="address1" value="{{getAddress1}}"><b>{{getAddress1}}</b><br>
+						</div>	
+					</div>
+					<div class="form-group" style="padding-bottom:20px;">
+						<label class="control-label col-sm-3" for="address">{{_ "Address"}} <span style="color:red">*</span></label>
+						<div class="col-sm-9">
+							<textarea type="textarea" name="address" id="address" class="form-control input-sm" placeholder="{{_ "Address"}}" col="15"></textarea>
+						</div>
+					</div>
+					
+
+					<div class="col-sm-6" style="float:right">
+							<div class="col-sm-4">
+							<input type="submit" value="{{_ 'Update'}}" id="btnNext" class="btn-xs btn-primary btn-block pull-right">
+						</div>
+						<!-- <div class="col-sm-4">
+							<a href="/confirmorder2"><input type="button" value="{{_ 'Next'}}" class="btn-xs btn-primary btn-block pull-left"></a>
+							</div> -->
+				   </div>
+					</form>
+					<!-- End Address -->
+					</div>
+					
+				</div>
+				<script type="text/javascript">
+					$(document).ready(function() {
+					    $('#address1').change(function() {
+					        if($(this).is(":checked")) {
+					            $('#address').hide();   
+					        }else{
+					        	$('#address').show();
+					        }         
+					    });
+					    $( "#address" ).keyup(function() {
+						  var str=$('#address1').val();
+						  if(str!=''){
+						  	$('#address1').hide();
+						  }
+						});
+						$( "#address" ).mouseout(function() {
+						  	$('#address1').show();
+						});
+					});
+				</script>
+</template>

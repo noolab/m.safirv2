@@ -1,0 +1,221 @@
+<template name="header">
+	<header id="header">
+		<div class="header_top">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="header_top_left">
+							<ul class="nav nav-pills">
+								{{#if currentUser}}
+									<li><a href="/profile" style="background: none !important;">{{_ "My Profile"}}</a></li>
+									
+								{{/if}}
+
+								{{#if currentUser}}
+									<li><a href="#" id="logout" style="background: none !important;">{{_ "Log Out"}}</a></li>
+								{{else}}
+										<li><a href="{{pathFor 'login'}}" style="background: none !important;">{{_ "Login/Register"}}</a></li>
+								{{/if}}
+								
+								{{#if currentUser}}
+										<li><a href="/reward" style="background: none !important;">{{_ "Rewards and points"}}</a></li>
+								{{/if}}
+								
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="header_top_right pull-right">
+							<ul class="nav nav-pills">
+								<li><a href="" id="en" style="background: none !important;">{{changeLanguage}}</a></li>
+								<li><a href="/webzinelisting" style="background: none !important;">{{_ "WEBZINE"}}</a></li>
+								<li><a href="/" style="background: none !important;">{{_ "Home"}}</a></li>
+								<li class="dropdown">
+									<a class="dropdown-toggle" style="margin:0px;padding:0px;background: none !important;" href="#" data-toggle="dropdown">
+										<img src="/images/cart3-01.png" style="margin:0px;padding:0px;" alt=""/> <strong class="caret"></strong></a>
+									<ul class="dropdown-menu cart-dropdown">
+										{{#each getCart}}
+										{{#with getProductInfo _id}}
+										<li class="item-cart col-lg-12">
+
+											<div class="col-lg-6">
+												<div class="img-cart">
+													<img style="border:5px solid #000" src="{{getImg product.image}}" class="img-circle center-block" height="105" width="105">
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<a href="" id="remove" class="pull-right" style="width:50%;height:50%;margin-right:1px;"><img src="/images/system/cancel_login-01.png" /></a>
+												<p class="bold">{{product.title}}<br>x {{qty}}</p>
+												<p class="bold">{{product.price}}</p>
+												<p class="bold">{{shop}}</p>
+											</div>
+										</li>
+										{{/with}}
+										{{/each}}
+										<div class="clearfix" style="margin-bottom: 30px;"></div>
+										<li class="hr-item-cart">
+											<div class="hr1">
+												<div class="col-lg-6">
+													<p class="bolder">{{_ "Sub"}} {{_ "Total"}}:</p>
+												</div>
+												<div class="col-lg-6">
+													<p class="bolder text-right">{{total}}</p>
+												</div>
+											</div>
+										</li>
+										<div class="clearfix"></div>	
+										<li class="hr-item-cart1">
+											<div class="hr2">
+												<div class="col-lg-6">
+													<p class="bolder">{{_ "Total"}}:</p>
+												</div>
+												<div class="col-lg-6">
+													<p class="bolder text-right">{{total}}</p>
+												</div>
+											</div>
+										</li>
+										<div class="clearfix"></div>
+										<li class="hr-item-cart2">
+											<div class="hr3">
+												<div class="a-checkout">
+													<a href="/checkout"><p>{{_ "CHECKOUT"}}</p></a>
+												</div>
+											</div>
+										</li>							
+									</ul>
+								</li>
+								<li><a href="/favorite"><i class="fa fa-heart fa-1x"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--end header top-->
+		<div class="header_middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="logo">
+							<a href="/"><img src="/images/system/logo.png"/></a>
+						</div>
+					</div>
+					<div class="col-sm-5 padding-right">
+						<div class="box search">
+							<div class="all">
+								<div id="menu_all" class="list_all">
+									<div class="row">
+					        	<ul class="list-inlines">
+									<li class="sub_all"><a href="" data-group="1" class="searchselection">{{_ "Products"}}</a></li>
+									<!--<li class="sub_all"><a href="" data-group="2">Forum</a></li>
+									<li class="sub_all"><a href="" data-group="3" class="searchselection">{{_"Looks"}}</a></li>-->
+									<li class="sub_all"><a href="" data-group="4" class="searchselection">{{_ "WEBZINE"}}</a></li>
+									<li class="sub_all"><a href="" data-group="5" class="searchselection">{{_ "Tutorial"}}</a></li>
+									<li class="sub_all"><a href="" data-group="0" class="borderleft searchselection" >{{_ "ALL"}}</a></li>
+								</ul>
+								</div>
+								</div>
+							</div>
+					       
+				    	</div>
+					</div>
+					<div class="col-sm-5 padding-left">
+						<div class="search">
+							<div class="input-group">
+								<span class="input-group-addon slide-toggle"><i class="fs glyphicon glyphicon-list"  id="btn_all" data-selected="0">All</i></span>
+								<input class="form-control input-search " placeholder='{{_ "Search for..."}}' type="text" id="textToSearch">
+								<span class="input-group-btn">
+									<button class="btn kesearch" type="button" style="padding:0px 10px 0px 10px; margin:0px 0px 0px 5px;">
+											<i class="fa fa-search" style="margin-top:-10px;"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--end header middle-->
+		<div class="header_bottom">
+			
+			<!-- Static navbar -->
+			<nav class="navbar" id="nav-fixed">
+				<div class="container">
+					<div class="navbar-header" id="menu-mobile">
+						<!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>-->
+						<span class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><img src="/images/system/icon.png" /></span>
+					
+					<a class="navbar-brand" href="#">{{_ "MENU"}}</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="megamenu">
+							{{#each getParent}}
+								<li class="biglink" id="tracker_{{_id}}"><a href="{{pathFor 'listing' id=_id}}" class="megamenu_drop megamenu_drop1">{{title}}</a>
+									<div class="dropdown_fullwidth" id="back"><!-- Begin Item Container -->  
+									<div class="container">
+										<div class="col_3 responsive_halfs">
+											<ul class="num">
+												{{#each getChildren _id}}
+												<li><a href="{{pathFor 'listing' id=_id}}" id="child1">{{title}}</a></li>
+												{{/each}}
+											</ul>   
+										</div>
+										<div class="col_3 responsive_halfs bord-left">
+											<ul class="num2" id="colonne2">
+												
+												
+											</ul>    
+										</div>
+										<div class="col_3 responsive_halfs">
+											<ul class="list" id="colonne3">
+												
+												
+											</ul>   
+										</div>
+										<!--<div class="col_3 responsive_halfs">
+											<ul class="list">
+												<li><a href="#_">Design</a></li>
+												<li><a href="#_">Logo</a></li>
+												<li><a href="#_">Flash</a></li>
+												<li><a href="#_">Illustration</a></li>
+												<li><a href="#_">More...</a></li>
+											</ul>    
+										</div>-->
+									</div>
+								</div><!-- End Item container -->
+							</li>
+							{{/each}}
+							
+							<li><a href="#" class="megamenu_drop megamenu_drop9" id="community">{{_ "Community"}}</a>
+								<div class="dropdown_fullwidth"><!-- Begin Item Container -->
+
+									<div class="container">
+										<label  class=" col1_commu ">
+											<ul>
+												<li><a href="/webzinelisting">{{_ "WEBZINE"}}</a></li>
+											</ul>  
+										</label >
+										<label class=" col1_commu">
+											<ul>
+												<li><a href="/tuto">{{_ "TUTO"}}</a></li>
+											</ul>
+										</label >
+									</div>
+								</div><!-- End Item container -->
+							</li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</nav>
+		</div><!--end header bottom-->
+		<script> 
+		$(document).ready(function(){
+		    $("#btn_all").click(function(){
+		        $("#menu_all").slideToggle("slow");
+		    });
+		});
+		</script>
+	</header><!--end header-->
+</template>

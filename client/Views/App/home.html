@@ -1,0 +1,178 @@
+ <template name="home">
+
+	<section id="slider">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- slide swiper -->
+					<div class="swiper-container swiper-container-horizontal make-it-fit">
+						<div class="swiper-wrapper">
+							{{#each getbanner}}
+							<div  class="swiper-slide swiper-slide-prev">
+								<a href="{{url}}">
+									<img  style="height:300px; width:400px;" class="img-responsive center-block" src="{{getImg imageId}}"/>
+								</a>			
+								
+
+							</div>
+							{{/each}}
+							
+						</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+						<!-- /slide swiper -->
+					</div>
+					<script>
+						/* slide swiper */
+						var swiper = new Swiper('.swiper-container', {
+							pagination: '.swiper-pagination',
+							nextButton: '.swiper-button-next',
+							prevButton: '.swiper-button-prev',
+							paginationClickable: false,
+							spaceBetween: 30,
+							centeredSlides: true,
+							autoplay: 5000,
+							autoplayDisableOnInteraction: false
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+	</section><!--end section slider-->
+		<div class="hbg">	
+			<section id="trendy_product">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							{{#with list1}}
+							<h1 class="text-center" style="font-weight:bold">{{title}}</h1>
+
+							<div class="clearout"></div> 
+							<ul id="flexiselDemo2"> 
+								{{#each products}}
+								{{#with getProduct this}}
+								<li><a href="{{pathFor 'details' id=_id}}"><img class="img-responsive img-circle center-block" src="{{getImg image}}" style="width:170px;height:170px;border-radius:50%;border:solid black 8px;" /></a> 
+								</li>
+								{{/with}}
+								{{/each}}                                                                          
+							</ul>
+							{{/with}}
+						</div>
+					</div>
+				</div>
+			</section><!-- end trendy product -->
+			<script type="text/javascript">
+
+
+				$("#flexiselDemo2").flexisel({
+					enableResponsiveBreakpoints: true,
+					responsiveBreakpoints: { 
+						portrait: { 
+							changePoint:480,
+							visibleItems: 1
+						}, 
+						landscape: { 
+							changePoint:640,
+							visibleItems: 2
+						},
+						tablet: { 
+							changePoint:768,
+							visibleItems: 3
+						}
+					}
+				});
+
+				
+
+			</script>		
+
+
+			<section id="best_selling_product">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							{{#with list2}}
+							<h1 class="text-center" style="font-weight:bold">{{title}}</h1>
+
+							<div class="clearout"></div> 
+							<ul id="flexiselDemo4"> 
+								{{#each products}}
+								{{#with getProduct this}}
+								<li><a href="{{pathFor 'details' id=_id}}"><img class="img-responsive img-circle center-block" src="{{getImg image}}" style="border-radius:50%;border:solid black 8px;width:170px;height:170px;" /></a> 
+								</li>
+								{{/with}}
+								{{/each}}                                                                          
+							</ul>
+							{{/with}}
+						</div>
+					</div>
+				</div>
+			</section><!-- end BEST SELLER PRODUCTS -->
+			<script type="text/javascript">
+
+				$("#flexiselDemo4").flexisel({
+					enableResponsiveBreakpoints: true,
+					responsiveBreakpoints: { 
+						portrait: { 
+							changePoint:480,
+							visibleItems: 1
+						}, 
+						landscape: { 
+							changePoint:640,
+							visibleItems: 2
+						},
+						tablet: { 
+							changePoint:768,
+							visibleItems: 3
+						}
+					}
+				});
+
+
+			</script>	
+			<section id="season_product">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							{{#with list3}}
+						<h1 class="text-center" style="font-weight:bold">{{title}}</h1>
+
+							<div class="clearout"></div> 
+							<ul id="flexiselDemo5"> 
+								{{#each products}}
+								{{#with getProduct this}}
+								<li><a href="{{pathFor 'details' id=_id}}"><img class="img-responsive img-circle center-block" src="{{getImg image}}" style="width:170px;height:170px;border-radius:50%;border:solid black 8px;" /></a> 
+								</li>
+								{{/with}}
+								{{/each}}                                                                          
+							</ul>
+							{{/with}}
+						</div>
+					</div>
+				</div>
+			</section><!-- end SEASON PRODUCTS -->
+			<script type="text/javascript">
+
+
+				$("#flexiselDemo5").flexisel({
+					enableResponsiveBreakpoints: true,
+					responsiveBreakpoints: { 
+						portrait: { 
+							changePoint:480,
+							visibleItems: 1
+						}, 
+						landscape: { 
+							changePoint:640,
+							visibleItems: 2
+						},
+						tablet: { 
+							changePoint:768,
+							visibleItems: 3
+						}
+					}
+				});
+				
+			</script>
+
+		</div>
+	</template>

@@ -1,0 +1,102 @@
+<template name="checkout">
+<section class="shadow_bottom" id="checkout">
+	<div class="container" style="padding-bottom:20px;">
+			
+			<h1 class="content-text-review">وارسی</h1>
+			<hr>
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-striped">
+					    <thead>
+					      <tr>
+					        <th>تصویر</th>
+					        <th>نام محصول</th>
+					        <th>مغازه</th>
+					        <th>تعداد</th>
+					        <th>قیمت</th>
+					        <th>جمع جزء</th>
+					        <th>ابزار</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    {{#each getCart}}
+					      <tr>
+					        <td>{{#with getProductInfo id_product}}<a href="/details/{{_id}}"><img src="{{getImg image}}" class="img-responsive" style="width:70px; height:70px;"></a>{{/with}}
+					        </td>
+					        <td>
+					        	{{#with getProductInfo id_product}}{{title}}{{/with}}
+					        </td>
+					        <td>
+					        	{{getShopName shop}}
+					        </td>
+					        <td>
+					        	<div class="col-sm-5">
+								<input type="text" name="quantity" id="quantity" class="form-control input-sm" placeholder="Qty" value="{{quantity}}"  ></div>
+					        </td>
+					        <td>
+					        	{{#with getProductInfo id_product}}{{price}}{{/with}}
+					        </td>
+					        <td>
+					        	{{subtotal}}
+					        </td>
+					        <td>
+					        	<a href="" id="removecheckout" class="glyphicon glyphicon-trash" style="color:black;" ></a>
+					        </td>
+					      </tr>
+					  	{{/each}}
+					  	<tr>
+					  		<td colspan="5" align="right">
+					  			<strong>Total</strong>
+					  		</td>
+					  		<td colspan="2" align="center">
+					  			<strong>{{getTotal}}</strong>
+					  		</td>
+					  	</tr>
+					    </tbody>
+					  </table>
+					
+					<div class="row">
+						<!-- Address -->
+						   <!-- <table class="table">
+									<tbody>
+										{{#with getprofile}}
+										
+										<tr>
+											<td><strong>Email:</strong></td>
+											{{#each emails}}
+											<td style="font-weight:bold" id="email">{{address}}</td>
+											{{/each}}
+										</tr>
+										<tr>
+											<td><strong>Address:</strong></td>
+											<td style="font-weight:bold" id="address">{{profile.address}}</td>
+										</tr>
+										{{/with}}
+									</tbody>
+									
+								</table> -->
+					
+					<!-- End Address -->
+					</div>
+					<div class="row">
+						<hr><div class="pull-right"><input type="button"  class="btn btn-primary" style="background:#000" id="btnAdd" value="سفارش اقدام"></div>
+					</div>
+
+				</div>
+				<div class="clearfix"></div>
+				<div class="col-md-3"></div>
+				
+			</div>
+
+			<form action='https://sep.shaparak.ir/Payment.aspx' method='POST'>
+    <input type='hidden' id='Amount' name='Amount' value='{{getTotal}}'> <!-- مبلغ -->
+    <input type='hidden' id='MID' name='MID' value='10443844'> <!-- شماره مشتری بانک سامان -->
+    <input type='hidden' id='ResNum' name='ResNum' value='{{resNum}}'> <!-- شماره فاکتور -->
+    <input type='hidden' id='RedirectURL' name='RedirectURL' value='http://54.152.226.45:3000/payment'> <!-- آدرس بازگشت -->
+    <input type="submit" value='پرداخت' id="bank">
+</form>
+
+
+	</div>
+</section>
+</template>

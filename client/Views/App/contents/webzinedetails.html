@@ -1,0 +1,151 @@
+<template name="webzinedetails">
+<section class="webzine">
+		<div class="container">
+			<div class="mode-news" style="margin-top: 50px; padding-bottom: 30px;">
+				<h2 class="text-center bold">{{title}}</h2>
+				<div class="mode-img">
+					<img src="{{getImg image}}" class="center-block img-responsive">
+				</div>
+				<div class="mode-description">
+					<p class="cetner-block p-pad">{{{content}}}</p>
+				</div>
+				<hr class="under-p-pad">
+				
+			</div>
+			<div class="col-md-12">
+			{{#if currentUser}}
+			{{>addreview}}
+			{{/if}}
+			 {{#each getReviews review filterReview removeFilter}}
+			{{>review}}
+			{{else}}
+			<i>No reviews</i>
+			{{/each}}
+			<div class="pull-right">
+			<h3 id="show1">{{_ "MORE REVIEWS"}} &nbsp; <i class="fa fa-angle-down" id="btnMore"></i></h3>   
+			</div>
+			<div class="wrapper_forum">
+			<div class="filter_set">
+			</div>
+			</div>
+
+			<div class="clearfix"></div>
+				<div class="mode-lips" style="background-color: #ebebea; overflow:hidden;">
+					<div class="lips-box">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						    <div class="row h1-pad" style="margin-left:15px;">
+						 
+							<h1>{{_ "ARTICLE ABOUT"}}</h1>
+							
+						</div>
+						<br>
+						{{#each related category _id}}
+							<div class="on-lips">
+								<div class="col-md-6 col-lg-6">
+						
+								   <img src="{getImg image}}" class="img-responsive space-img" style="margin-bottom:20px;">
+								</div>
+								<div class="col-md-6 col-lg-6">
+									<div class="text-artical space-text">
+									 	<h2 class="bold">{{title}}</h2>
+									 	<p class="space-arctical bold">{{{content}}}</p>
+									</div> 
+								</div>
+							</div>
+
+						{{else}}
+						{{_"No article related"}}
+						{{/each}}
+						</div>
+					</div>
+				</div>	
+			<div class="clearfix"></div>
+			<br>
+				
+				<div class="clearfix"></div>
+				<div class="forum-lips" style="background-color: #ebebea; overflow:hidden;">
+					<div class="lips-box">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						    <div class="row h1-pad" style="margin-left:15px;">
+							<h1>{{_"RELATED PRODUCTS"}}</h1>
+						</div>
+
+						<br>
+							<div class="on-lips">
+								<div class="row"> 
+								
+								{{#each related_product category}}
+								  <div class="col-md-3">
+								    <a href="{{pathFor 'details' id=_id}}"><img style="border:8px solid #000" src="{{getImg image}}" class="img-circle center-block" alt="Cinque Terre" width="150" height="150"></a>
+									<p class="rel-title relatedp"><a href="{{pathFor 'details' id=_id}}">{{title}}</a></p>
+									<h3 class="text-center" style="font-weight:bold;font-size:1em;">{{price}}</h3>
+								  </div>
+								 {{/each}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		</div>
+	</section>
+
+<!-- 				 <div class="webzine-comment forum-lips" style="background-color: #ebebea; overflow:hidden;">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 error-mgs"><h3>Review</h3></div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 error-mgs">{{{getErrormsg}}}</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						
+						<form class="addComment" data-toggle="validator" role="form" novalidate="true">
+							<div class="form-group">
+							  <label for="inputName" class="control-label">Comment Title</label>
+							  <input type="text" class="form-control" id="inputName" placeholder="Title" data-error="Titile is required." required>
+							  <div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+							  <label for="description" class="control-label">Description</label>
+							  <textarea class="form-control" id="description" placeholder="Description" data-error="Description is required." required></textarea>
+							  <div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group group-grade" data-error="Check one of grades.">
+								<label for="grade" class="control-label">Grade</label>
+								<input type="radio" class="grade" name="grade" value="1">
+								<input type="radio" class="grade" name="grade" value="2">
+								<input type="radio" class="grade" name="grade" value="3">
+								<input type="radio" class="grade" name="grade" value="4">
+								<input type="radio" class="grade" name="grade" value="5">
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary" id="addComment">Submit</button>
+						  </div>
+						</form>
+						
+						<div class="boder"></div>
+						
+						<div class="list-group">
+							<div class="row comment-row">
+								<div class="col-md-2 img">Author</div>
+								<div class="col-md-3">Title</div>
+								<div class="col-md-5">Description</div>
+								<div class="col-md-2">Grade</div>
+							</div>
+							{{#each getComment}}
+							<div class="row comment-row">
+								<div class="col-md-2 img">
+									{{getUsername userId}}
+								</div>
+								<div class="col-md-3">
+									{{title}}
+								</div>
+								<div class="col-md-5">
+									{{description}}
+								</div>
+								<div class="col-md-2">
+									{{grade}}
+								</div>
+							</div>
+							{{/each}}
+						</div>
+					</div>
+				</div> -->
+</template>

@@ -1,0 +1,11 @@
+ Meteor.methods({
+  insertAttr:function(attr){
+    attribute_value.insert(attr);
+  },
+  editAttr:function(id,attr){
+    attribute_value.update({_id:id},{$set:attr});
+  },
+  deleteAttr:function(id,attr){
+    attribute_value.delete({_id:id});
+  }
+});
